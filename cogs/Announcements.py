@@ -85,6 +85,18 @@ class Announcements(commands.Cog):
             await interaction.channel.send(embed=embed)
         else:
             await interaction.response.send_message(f"You don't have permission to use this command!", ephemeral=True)
+
+    @app_commands.command(name='send_schedule', description="Send Schedule")
+    async def send_schedule(self, interaction: discord.Interaction):
+        if interaction.user.id == 305566021664899072:
+            await prompt_wait(interaction.channel)
+            await interaction.response.send_message(f'Schedule Posted!', ephemeral=True)
+            embed=discord.Embed(title="This year's schedule!", color=discord.Color.from_str('#e5de00'))
+            embed.set_image(url="https://cdn.discordapp.com/attachments/426607203781312513/1090676007759003688/Hammer_Wars_2.0_Event_Details_Packet-05.png")
+            await prompt_wait(interaction.channel)
+            await interaction.channel.send(embed=embed)
+        else:
+            await interaction.response.send_message(f"You don't have permission to use this command!", ephemeral=True)
     
 async def prompt_wait(channel):
     '''shows lifelike typing in specified channel'''
